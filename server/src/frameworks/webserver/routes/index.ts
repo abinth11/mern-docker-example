@@ -1,9 +1,9 @@
 import { Application } from 'express';
-import userRouter from './user';
+import userRouter from './quotes';
 
 
 const routes = (app: Application) => {
-  app.use('/api/v1/user', userRouter());
+  app.use('/api/v1/quotes', userRouter());
   
 };
 

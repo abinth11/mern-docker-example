@@ -1,0 +1,63 @@
+.list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+.list-item{
+    margin-left: 2px;
+    padding: 5px;
+    
+}
+.list-item:hover{
+    cursor: pointer;
+    font-weight: 500;
+    
+}
+
+.quote-form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 80px 100px 80px 80px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin-left: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
