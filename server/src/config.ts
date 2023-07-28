@@ -3,6 +3,7 @@ dotenv.config();
 
 const CONFIG = {
   MONGO_DB_URL: process.env.DATABASE as string,
+  CLUSTER_URL:process.env.CLUSTER_URL as string,
   PORT: process.env.PORT,
 
   DB_NAME: process.env.DB_NAME,

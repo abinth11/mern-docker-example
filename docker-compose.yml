@@ -1,0 +1,63 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - my_network
+
+  # Node.js with Express.js back-end service
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"
+    # Remove or comment out the 'depends_on' block for MongoDB
+    # depends_on:
+    #   - mongodb
+    env_file:
+      - ./server/.env
+    networks:
+      - my_network # Attach this container to the custom network
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+# Remove the MongoDB service section entirely
+# MongoDB service
+# mongodb:
+#   image: mongo
+#   command: mongod --port 27000
+#   restart: always
+#   ports:
+#     - "27000:27000"
+#   environment:
+#     - MONGO_INITDB_ROOT_USERNAME=admin
+#     - MONGO_INITDB_ROOT_PASSWORD=password
+#   volumes:
+#     - ./db:/var/lib/mongodb/data
+
+# Define the custom network (you can keep it if you have other requirements)
+networks:
+  my_network:
+    driver: bridge
+
+# Define the named volume for MongoDB data (you can keep it if you have other requirements)
+# volumes:
+#   mongo-data:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /path/on/host/machine/mongo-data

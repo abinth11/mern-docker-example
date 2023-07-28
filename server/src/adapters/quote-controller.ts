@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
-import { QuoteInterface } from "../frameworks/webserver/types/quote";
+import { QuoteInterface } from "../types/quote";
 import {
   addQuoteUseCase,
   getAllQuotesUseCase,
@@ -12,7 +12,13 @@ const quoteController = (
   quoteInterface: QuoteDBInterface,
   quoteImpl: QuoteRepository
 ) => {
+
+
   const dbRepoQuote = quoteInterface(quoteImpl());
+
+
+
+
   const welcome = asyncHandler(async (req: Request, res: Response) => {
     res.status(200).json({
       status: "success",
@@ -28,6 +34,7 @@ const quoteController = (
       .status(200)
       .json({ status: "success", message: "successfully posted a quote" });
   });
+  
 
   const getAllQuotes = asyncHandler(async (req: Request, res: Response) => {
     const quotes: QuoteInterface[] = await getAllQuotesUseCase(dbRepoQuote);

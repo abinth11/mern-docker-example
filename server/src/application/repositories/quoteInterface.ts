@@ -1,4 +1,4 @@
-import { QuoteInterface } from "../../frameworks/webserver/types/quote";
+import { QuoteInterface } from "../../types/quote";
 import { QuoteRepository } from "../../frameworks/database/mongodb/repositories/quoteRepository";
 
 export const quoteDbInterface = (repository: ReturnType<QuoteRepository>) => {
@@ -7,9 +7,12 @@ export const quoteDbInterface = (repository: ReturnType<QuoteRepository>) => {
 
   const getAllQuotes = async ()=> await repository.getAllQuotes()
 
+  const editQuotes = async (id:string,quoteInfo:QuoteInterface)=> repository.editQuotes(id,quoteInfo)
+
   return {
     addQuote,
-    getAllQuotes
+    getAllQuotes,
+    editQuotes
   }
 };
 
