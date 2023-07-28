@@ -28,4 +28,4 @@ app.all("*", (req, res, next: NextFunction) => {
 });
 
 //* starting the server with server config
-serverConfig(server).startServer();
+serverConfig(server).startServer()
